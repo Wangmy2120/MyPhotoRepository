@@ -145,7 +145,7 @@ vintage-photography-website/
 如有问题或建议，请通过以下方式联系：
 - 邮箱：wangmy2120@qq.com
 - GitHub Issues
-
+- https://wangmy2120.github.io/MyPhotoRepository/
 ---
 
 **用镜头记录时光，用代码保存记忆**
