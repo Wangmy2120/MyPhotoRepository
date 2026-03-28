@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CelestialMy 作品集</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Source+Serif+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="grain-overlay"></div>
+    <div class="edit-mode">编辑模式</div>
+    
+    <header class="vintage-header">
+        <div class="header-content">
+            <h1 class="site-title">
+                <span class="title-main">CelestialMy</span>
+                <span class="title-sub">作品集</span>
+            </h1>
+            <p class="site-tagline">一瞬</p>
+            
+            <div class="login-container" id="loginContainer">
+                <button class="btn btn-login" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> 管理员登录
+                </button>
+            </div>
+        </div>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#gallery" class="nav-link active"><i class="fas fa-camera-retro"></i> 作品集</a></li>
+                <li><a href="#categories" class="nav-link"><i class="fas fa-tags"></i> 分类</a></li>
+                <li><a href="#upload" class="nav-link"><i class="fas fa-cloud-upload-alt"></i> 上传</a></li>
+                <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> 关于</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="vintage-container">
+        <section id="gallery" class="gallery-section">
+            <div class="section-header">
+                <h2><i class="fas fa-images"></i> 摄影作品</h2>
+                <p class="section-subtitle">精选瞬间，永恒记忆</p>
+            </div>
+            
+            <div class="category-filter">
+                <button class="filter-btn active" data-category="all">全部</button>
+                <button class="filter-btn" data-category="portrait">人像</button>
+                <button class="filter-btn" data-category="landscape">风景</button>
+                <button class="filter-btn" data-category="street">街头</button>
+                <button class="filter-btn" data-category="still">静物</button>
+            </div>
+            
+            <div class="photo-grid" id="photoGrid">
+                <!-- 照片将通过JavaScript动态加载 -->
+            </div>
+        </section>
+
+        <section id="upload" class="upload-section">
+            <div class="section-header">
+                <h2><i class="fas fa-cloud-upload-alt"></i> 上传照片</h2>
+                <p class="section-subtitle">分享你的视觉故事</p>
+            </div>
+            
+            <div class="upload-container">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                    <p class="upload-text">拖放照片到这里，或点击选择文件</p>
+                    <p class="upload-hint">支持 JPG, PNG, WebP 格式，最大 10MB</p>
+                    <input type="file" id="fileInput" accept="image/*" multiple>
+                </div>
+                
+                <div class="upload-form">
+                    <div class="form-group">
+                        <label for="photoTitle"><i class="fas fa-heading"></i> 照片标题</label>
+                        <input type="text" id="photoTitle" placeholder="为照片命名...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="photoCategory"><i class="fas fa-tag"></i> 分类</label>
+                        <select id="photoCategory">
+                            <option value="portrait">人像摄影</option>
+                            <option value="landscape">风景摄影</option>
+                            <option value="street">街头纪实</option>
+                            <option value="still">静物摄影</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="photoDescription"><i class="fas fa-edit"></i> 照片故事</label>
+                        <textarea id="photoDescription" rows="4" placeholder="分享这张照片背后的故事..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button class="btn btn-secondary" id="clearForm">清空</button>
+                        <button class="btn btn-primary" id="uploadBtn">上传照片</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="section-header">
+                <h2><i class="fas fa-user"></i> 关于摄影师</h2>
+                <p class="section-subtitle">镜头背后的故事</p>
+                <button class="btn btn-edit" id="editAboutBtn" style="display: none;">
+                    <i class="fas fa-edit"></i> 编辑
+                </button>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 id="aboutTitle" contenteditable="false">时光的捕手</h3>
+                    <p id="aboutPara1" contenteditable="false">摄影对我而言，不仅仅是记录瞬间，更是捕捉时光流逝的痕迹。每一张照片都是一段故事，每一次快门都是与世界的对话。</p>
+                    <p id="aboutPara2" contenteditable="false">我偏爱胶片摄影的质感，那种等待冲洗的期待，那种不可预知的结果，让每一张照片都变得独一无二。数码时代给了我们便利，但胶片给了我们温度。</p>
+                    <p id="aboutPara3" contenteditable="false">在这个空间里，我分享我的视觉日记，记录那些触动心灵的瞬间。希望这些影像能唤起你心中的共鸣，让你感受到时光的美好。</p>
+                    
+                    <div class="contact-info">
+                        <h4><i class="fas fa-envelope"></i> 联系我</h4>
+                        <p id="contactText" contenteditable="false">欢迎交流摄影心得，分享视觉故事</p>
+                        <p class="email" id="contactEmail" contenteditable="false">contact@vintageframes.com</p>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <div class="vintage-frame">
+                        <img id="aboutImage" src="https://images.unsplash.com/photo-1514888286974-6d03bde4ba42?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="摄影师">
+                        <div class="frame-border"></div>
+                        <div class="image-upload-overlay" id="imageUploadOverlay" style="display: none;">
+                            <i class="fas fa-camera"></i>
+                            <p>点击更换图片</p>
+                            <input type="file" id="aboutImageInput" accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-actions" id="aboutActions" style="display: none;">
+                <button class="btn btn-secondary" id="cancelAboutEdit">取消</button>
+                <button class="btn btn-primary" id="saveAboutEdit">保存更改</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="vintage-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>CelestialMy</h3>
+                <p>作品集</p>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#gallery">作品集</a>
+                <a href="#upload">上传</a>
+                <a href="#about">关于</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-flickr"></i></a>
+                <a href="#"><i class="fab fa-500px"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 CelestialMy 作品集 | 一瞬</p>
+        </div>
+    </footer>
+
+    <!-- 照片详情模态框 -->
+    <div class="modal" id="photoModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalPhoto" src="" alt="">
+                    <div class="photo-info">
+                        <h3 id="modalTitle"></h3>
+                        <p class="photo-category" id="modalCategory"></p>
+                        <p class="photo-date" id="modalDate"></p>
+                    </div>
+                </div>
+                <div class="modal-text">
+                    <div class="text-editor">
+                        <h4><i class="fas fa-edit"></i> 照片故事</h4>
+                        <textarea id="modalDescription" rows="6"></textarea>
+                        <div class="editor-actions">
+                            <button class="btn btn-secondary" id="cancelEdit">取消</button>
+                            <button class="btn btn-primary" id="saveEdit">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 登录模态框 -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content modal-sm">
+            <button class="modal-close" id="loginModalClose">&times;</button>
+            <div class="modal-body">
+                <div class="login-form">
+                    <h3><i class="fas fa-lock"></i> 管理员登录</h3>
+                    <p class="login-subtitle">请输入账号密码以编辑内容</p>
+                    
+                    <div class="form-group">
+                        <label for="username"><i class="fas fa-user"></i> 账号</label>
+                        <input type="text" id="username" placeholder="请输入管理员账号">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password"><i class="fas fa-key"></i> 密码</label>
+                        <input type="password" id="password" placeholder="请输入密码">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button class="btn btn-secondary" id="cancelLogin">取消</button>
+                        <button class="btn btn-primary" id="submitLogin">登录</button>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
